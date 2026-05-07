@@ -1,0 +1,1072 @@
+# luxekey[LuxeKey_Owner_Proposal.html](https://github.com/user-attachments/files/27498979/LuxeKey_Owner_Proposal.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuxeKey — Owner Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── Edit Mode Notice ───────────────────────────────────────────── */
+#edit-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #2A2118; color: #F2EBDC;
+  padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: 'Jost', sans-serif; font-size: 13px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+#edit-bar.hidden { transform: translateY(-100%); }
+.edit-bar-left { display: flex; align-items: center; gap: 10px; }
+.edit-dot { width: 8px; height: 8px; background: #CB7D5F; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.edit-bar-btns { display: flex; gap: 8px; }
+.eb-btn {
+  padding: 5px 14px; border-radius: 4px; font-size: 12px; font-weight: 500;
+  cursor: pointer; border: 1px solid rgba(242,235,220,0.3);
+  background: rgba(242,235,220,0.1); color: #F2EBDC;
+  font-family: 'Jost', sans-serif; transition: background 0.15s;
+}
+.eb-btn:hover { background: rgba(242,235,220,0.2); }
+.eb-btn.primary { background: #CB7D5F; border-color: #CB7D5F; color: white; }
+.eb-btn.primary:hover { background: #A05E42; }
+
+/* ── Variables ──────────────────────────────────────────────────── */
+:root {
+  --terra: #CB7D5F;
+  --terra-dark: #A05E42;
+  --terra-deep: #7A4530;
+  --terra-light: #E8C4B0;
+  --terra-pale: #F5EDE8;
+  --cream: #F2EBDC;
+  --cream-dark: #E4D9C6;
+  --ink: #1E1810;
+  --ink-mid: #3D3228;
+  --ink-soft: #6B5E52;
+  --warm-gray: #8C8070;
+  --white: #FFFDF9;
+  --border: rgba(160,94,66,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  padding-top: 44px; /* edit bar height */
+}
+
+/* ── Edit mode styles ───────────────────────────────────────────── */
+body.edit-mode [contenteditable] {
+  outline: 2px dashed rgba(203,125,95,0.4);
+  border-radius: 3px;
+  cursor: text;
+  min-width: 20px;
+  min-height: 1em;
+}
+body.edit-mode [contenteditable]:focus {
+  outline: 2px solid var(--terra);
+  background: rgba(203,125,95,0.05);
+}
+body.edit-mode .img-drop-zone {
+  cursor: pointer;
+}
+body.edit-mode .img-drop-zone:hover .drop-overlay { opacity: 1; }
+
+/* ── Navigation ─────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 44px; z-index: 100;
+  background: rgba(255,253,249,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 400; color: var(--terra);
+  letter-spacing: 0.01em; text-decoration: none;
+}
+.nav-logo span {
+  display: block; font-size: 9px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--warm-gray);
+  font-family: 'Jost', sans-serif; font-weight: 400; margin-top: -4px;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-soft); text-decoration: none; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--terra); }
+.nav-cta {
+  background: var(--terra); color: white !important;
+  padding: 8px 20px; border-radius: 4px;
+}
+.nav-cta:hover { background: var(--terra-dark) !important; color: white !important; }
+
+/* ── Hero ───────────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 92vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-img-zone {
+  position: absolute; inset: 0;
+}
+.hero-img-zone img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-zone .no-image {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #3D2A1E 0%, #6B4535 40%, #A05E42 100%);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(20,12,6,0.75) 0%, rgba(20,12,6,0.3) 60%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 80px; max-width: 720px;
+  animation: fadeUp 0.9s ease both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--terra-light); font-weight: 500; margin-bottom: 20px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 300; line-height: 1.05;
+  color: white; margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.hero-title em { font-style: italic; color: var(--terra-light); }
+.hero-sub {
+  font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.75);
+  font-weight: 300; max-width: 500px; margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  padding: 14px 32px; background: var(--terra); color: white;
+  border: none; border-radius: 4px; font-family: 'Jost', sans-serif;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+  cursor: pointer; text-decoration: none; transition: background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--terra-dark); }
+.btn-ghost {
+  padding: 14px 32px; background: transparent; color: white;
+  border: 1px solid rgba(255,255,255,0.4); border-radius: 4px;
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.05em; cursor: pointer; text-decoration: none;
+  transition: all 0.2s; display: inline-block;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.hero-stats {
+  position: absolute; bottom: 48px; right: 80px; z-index: 2;
+  display: flex; gap: 40px;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+.hero-stat { text-align: center; }
+.hero-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 400; color: white; line-height: 1;
+}
+.hero-stat-lbl {
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-top: 4px;
+}
+.hero-stat-divider { width: 1px; background: rgba(255,255,255,0.2); }
+
+/* ── Section shells ─────────────────────────────────────────────── */
+section { padding: 100px 80px; }
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--terra); font-weight: 500; margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px); font-weight: 300;
+  line-height: 1.1; color: var(--ink); margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--terra); }
+.section-body {
+  font-size: 15px; line-height: 1.8; color: var(--ink-soft);
+  font-weight: 300; max-width: 600px;
+}
+.divider {
+  width: 48px; height: 2px; background: var(--terra);
+  margin: 20px 0;
+}
+
+/* ── Image drop zone ────────────────────────────────────────────── */
+.img-drop-zone {
+  position: relative; overflow: hidden; border-radius: 6px;
+  background: var(--cream-dark);
+}
+.img-drop-zone img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.drop-overlay {
+  position: absolute; inset: 0;
+  background: rgba(203,125,95,0.85);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.2s;
+  color: white; font-size: 13px; font-weight: 500; gap: 8px;
+  pointer-events: none;
+}
+.drop-overlay svg { width: 28px; height: 28px; }
+.no-image-placeholder {
+  width: 100%; height: 100%; min-height: 280px;
+  background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; color: var(--warm-gray);
+}
+.no-image-placeholder svg { width: 36px; height: 36px; opacity: 0.4; }
+.no-image-placeholder span { font-size: 12px; letter-spacing: 0.08em; opacity: 0.6; }
+
+/* ── About section ──────────────────────────────────────────────── */
+.about-section { background: var(--white); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.about-images {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px;
+  gap: 12px;
+}
+.about-img-1 { grid-column: 1; grid-row: 1 / 3; }
+.about-img-2 { grid-column: 2; grid-row: 1; }
+.about-img-3 { grid-column: 2; grid-row: 2; }
+.about-img-1 .img-drop-zone, .about-img-2 .img-drop-zone,
+.about-img-3 .img-drop-zone { height: 100%; }
+
+/* ── Services section ───────────────────────────────────────────── */
+.services-section { background: var(--ink); }
+.services-section .section-title { color: white; }
+.services-section .section-body { color: rgba(255,255,255,0.6); }
+.services-section .section-eyebrow { color: var(--terra-light); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; overflow: hidden;
+}
+.service-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+.service-card:last-child { border-right: none; }
+.service-card:hover { background: rgba(203,125,95,0.08); }
+.service-icon {
+  width: 40px; height: 40px; margin-bottom: 20px;
+  background: rgba(203,125,95,0.15); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.service-icon svg { width: 20px; height: 20px; color: var(--terra-light); }
+.service-card-title {
+  font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: white; font-weight: 500; margin-bottom: 14px;
+}
+.service-list {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+}
+.service-list li {
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 300;
+  padding-left: 16px; position: relative; line-height: 1.5;
+}
+.service-list li::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 5px; height: 1px; background: var(--terra);
+}
+
+/* ── Revenue section ────────────────────────────────────────────── */
+.revenue-section { background: var(--terra-pale); }
+.revenue-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.revenue-img-stack {
+  position: relative; height: 520px;
+}
+.revenue-img-main { position: absolute; top: 0; left: 0; right: 60px; bottom: 60px; }
+.revenue-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 55%; }
+.revenue-img-main .img-drop-zone,
+.revenue-img-accent .img-drop-zone { height: 100%; }
+.projection-card {
+  background: white; border-radius: 8px;
+  padding: 32px; margin-top: 40px;
+  box-shadow: 0 4px 24px rgba(160,94,66,0.1);
+}
+.proj-title {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--warm-gray); margin-bottom: 20px; font-weight: 500;
+}
+.proj-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.proj-kpi { text-align: center; }
+.proj-kpi-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; color: var(--terra-dark); font-weight: 500; line-height: 1;
+}
+.proj-kpi-lbl {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--warm-gray); margin-top: 4px;
+}
+.proj-disclaimer {
+  font-size: 10px; color: var(--warm-gray); margin-top: 16px;
+  padding-top: 16px; border-top: 1px solid var(--border); line-height: 1.6;
+}
+
+/* ── How it works ───────────────────────────────────────────────── */
+.process-section { background: var(--white); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 40px; margin-top: 60px;
+}
+.step { position: relative; }
+.step::after {
+  content: '';
+  position: absolute; top: 20px; left: calc(50% + 24px);
+  right: calc(-50% + 24px);
+  height: 1px; background: var(--terra-light);
+}
+.step:last-child::after { display: none; }
+.step-num {
+  width: 40px; height: 40px; background: var(--terra); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 18px;
+  color: white; font-weight: 400; margin-bottom: 20px;
+}
+.step-title {
+  font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 600; color: var(--ink); margin-bottom: 10px;
+}
+.step-body {
+  font-size: 13px; line-height: 1.7; color: var(--ink-soft); font-weight: 300;
+}
+
+/* ── What's included ────────────────────────────────────────────── */
+.included-section { background: var(--cream); }
+.included-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  margin-top: 60px; border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden;
+}
+.included-col { padding: 48px 40px; }
+.included-col:first-child { border-right: 1px solid var(--border); }
+.included-col-title {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--terra-dark); font-weight: 600; margin-bottom: 28px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.included-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.included-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: var(--ink-soft); font-weight: 300; line-height: 1.5;
+}
+.check {
+  width: 18px; height: 18px; background: var(--terra); border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.check svg { width: 9px; height: 9px; }
+.plus-icon {
+  width: 18px; height: 18px; background: var(--cream-dark); border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: 1px; border: 1px solid var(--border);
+}
+.plus-icon svg { width: 9px; height: 9px; color: var(--terra); }
+
+/* ── Agreement section ──────────────────────────────────────────── */
+.agreement-section { background: var(--ink); }
+.agreement-section .section-title { color: white; }
+.agreement-section .section-eyebrow { color: var(--terra-light); }
+.agreement-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  margin-top: 60px; align-items: start;
+}
+.agreement-points { display: flex; flex-direction: column; gap: 24px; }
+.ag-point { display: flex; gap: 20px; align-items: flex-start; }
+.ag-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300;
+  color: rgba(203,125,95,0.3); line-height: 1; flex-shrink: 0; width: 40px;
+}
+.ag-title {
+  font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: white; font-weight: 500; margin-bottom: 6px;
+}
+.ag-body {
+  font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); font-weight: 300;
+}
+.agreement-img { height: 500px; }
+.agreement-img .img-drop-zone { height: 100%; }
+
+/* ── Onboarding checklist ───────────────────────────────────────── */
+.onboarding-section { background: var(--white); }
+.checklist-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 12px;
+  margin-top: 48px;
+}
+.checklist-item {
+  background: var(--cream); border-radius: 6px;
+  padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+  border: 1px solid var(--border);
+}
+.check-num {
+  width: 28px; height: 28px; border: 1.5px solid var(--terra);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--terra); font-weight: 600; flex-shrink: 0;
+}
+.check-title {
+  font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.check-body { font-size: 12px; line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
+
+/* ── Technology section ─────────────────────────────────────────── */
+.tech-section { background: var(--terra-pale); }
+.tech-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px;
+}
+.tech-card {
+  background: white; border-radius: 6px; padding: 28px 24px;
+  border: 1px solid rgba(203,125,95,0.1);
+}
+.tech-icon { font-size: 24px; margin-bottom: 14px; }
+.tech-title {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600; color: var(--ink); margin-bottom: 8px;
+}
+.tech-body { font-size: 13px; line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
+
+/* ── Gallery section ────────────────────────────────────────────── */
+.gallery-section { background: var(--white); padding: 80px; }
+.gallery-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 42px); font-weight: 300;
+  color: var(--ink); margin-bottom: 32px; text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 10px;
+}
+.gallery-grid .img-drop-zone { height: 100%; }
+.gallery-grid > :first-child { grid-row: 1/3; }
+
+/* ── CTA section ────────────────────────────────────────────────── */
+.cta-section {
+  background: var(--terra); padding: 100px 80px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: 'luxekey';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 220px; font-weight: 300; color: rgba(255,255,255,0.06);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 62px); font-weight: 300;
+  color: white; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.cta-sub {
+  font-size: 15px; color: rgba(255,255,255,0.75); font-weight: 300;
+  max-width: 500px; margin: 0 auto 40px; line-height: 1.7; position: relative;
+}
+.cta-contact {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  position: relative; margin-top: 48px;
+  padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.2);
+}
+.cta-contact-item { text-align: center; }
+.cta-contact-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin-bottom: 6px;
+}
+.cta-contact-val {
+  font-size: 15px; color: white; font-weight: 400;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+footer {
+  background: var(--ink); padding: 32px 80px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--terra); font-weight: 400;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ── Reservation builder embed ───────────────────────────────────── */
+.builder-section { background: var(--cream); padding: 80px; }
+.builder-wrap {
+  background: white; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.08);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media(max-width:1000px){
+  section { padding: 60px 32px; }
+  .about-grid, .revenue-grid, .agreement-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid, .process-steps { grid-template-columns: 1fr 1fr; }
+  .tech-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-grid > :first-child { grid-row: auto; }
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 32px; }
+  .hero-stats { right: 32px; }
+  .cta-section, .gallery-section, .builder-section { padding: 60px 32px; }
+  footer { padding: 24px 32px; }
+}
+
+@media print {
+  #edit-bar { display: none !important; }
+  body { padding-top: 0; }
+  nav { position: static; }
+  .builder-section { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Edit Bar -->
+<div id="edit-bar">
+  <div class="edit-bar-left">
+    <div class="edit-dot"></div>
+    <span>Click any text to edit it. Click image zones to swap photos.</span>
+  </div>
+  <div class="edit-bar-btns">
+    <button class="eb-btn" onclick="toggleEditMode()">Toggle Edit Mode</button>
+    <button class="eb-btn primary" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a href="#" class="nav-logo">luxekey<span>Vacation Rentals</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#revenue">Revenue</a>
+    <a href="#agreement">Agreement</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-img-zone">
+    <div class="img-drop-zone" style="height:100%" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Click to add hero image</span>
+      </div>
+      <div class="drop-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Click to swap hero image
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" contenteditable="false">Luxury Vacation Rental Management · Scottsdale, Phoenix & Paradise Valley</div>
+    <h1 class="hero-title" contenteditable="false">Your home.<br><em>Fully managed.</em><br>Truly effortless.</h1>
+    <p class="hero-sub" contenteditable="false">LuxeKey handles every detail of your short-term rental — from professional photography and listing creation to guest communication, housekeeping, and monthly disbursements. You own the asset. We do the work.</p>
+    <div class="hero-btns">
+      <a href="#revenue" class="btn-primary">See Revenue Projection</a>
+      <a href="#agreement" class="btn-ghost">View Agreement Terms</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val" contenteditable="false">30+</div>
+      <div class="hero-stat-lbl">Properties Managed</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-val" contenteditable="false">5★</div>
+      <div class="hero-stat-lbl">Average Guest Rating</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-val" contenteditable="false">25%</div>
+      <div class="hero-stat-lbl">Management Fee</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-images">
+      <div class="about-img-1">
+        <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+          <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add image</span></div>
+          <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+        </div>
+      </div>
+      <div class="about-img-2">
+        <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+          <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add image</span></div>
+          <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+        </div>
+      </div>
+      <div class="about-img-3">
+        <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+          <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add image</span></div>
+          <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow" contenteditable="false">Who We Are</div>
+      <h2 class="section-title" contenteditable="false">Built by owners,<br><em>for owners.</em></h2>
+      <div class="divider"></div>
+      <p class="section-body" contenteditable="false">We're LuxeKey — a group of creative, passionate professionals focused on providing elevated experiences for the discerning traveler and savvy homeowner.</p>
+      <br>
+      <p class="section-body" contenteditable="false">We started as private property owners ourselves, searching for a management partner that actually delivered. When we couldn't find one, we built it. Today we manage 30+ luxury properties across Scottsdale, Phoenix, and Paradise Valley with a team that specializes in hospitality, design, real estate investment, and property management.</p>
+      <br>
+      <p class="section-body" contenteditable="false">LuxeKey is so much more than a property management company. We've curated our service to ensure every guest has a first-class visit and every partner can relax and enjoy the benefits of a hands-off, lucrative investment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section" id="services">
+  <div class="section-eyebrow" contenteditable="false">What We Handle</div>
+  <h2 class="section-title" contenteditable="false">Full-service management,<br><em>nothing left to chance.</em></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
+      <div class="service-card-title" contenteditable="false">Listing & Bookings</div>
+      <ul class="service-list">
+        <li contenteditable="false">Professional photography</li>
+        <li contenteditable="false">Multi-platform listing distribution</li>
+        <li contenteditable="false">Pricing & revenue optimization</li>
+        <li contenteditable="false">Booking management</li>
+        <li contenteditable="false">24/7 guest communication</li>
+        <li contenteditable="false">Damage protection on all reservations</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="service-card-title" contenteditable="false">Property Operations</div>
+      <ul class="service-list">
+        <li contenteditable="false">Turnover & housekeeping management</li>
+        <li contenteditable="false">Monthly QC inspection visits</li>
+        <li contenteditable="false">Linens, towels & consumables</li>
+        <li contenteditable="false">Guest essentials procurement</li>
+        <li contenteditable="false">Vendor coordination</li>
+        <li contenteditable="false">Repairs & maintenance coordination</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <div class="service-card-title" contenteditable="false">Finance & Compliance</div>
+      <ul class="service-list">
+        <li contenteditable="false">Monthly ACH disbursements</li>
+        <li contenteditable="false">Trust account management</li>
+        <li contenteditable="false">TPT tax remittance</li>
+        <li contenteditable="false">Annual 1099 reporting</li>
+        <li contenteditable="false">Permitting & compliance (State, County, City)</li>
+        <li contenteditable="false">Owner portal with live statements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Revenue Projection -->
+<section class="revenue-section" id="revenue">
+  <div class="revenue-grid">
+    <div>
+      <div class="section-eyebrow" contenteditable="false">Revenue Projection</div>
+      <h2 class="section-title" contenteditable="false">What your property<br><em>could earn in 2026.</em></h2>
+      <div class="divider"></div>
+      <p class="section-body" contenteditable="false">Based on comparable properties in our portfolio and current market demand, we've modeled a projection for your property. Rates are driven by seasonality, local events, and real-time competitive pricing — all managed by our team.</p>
+      <div class="projection-card">
+        <div class="proj-title">Valley Vista — 2026 Projection</div>
+        <div class="proj-kpis">
+          <div class="proj-kpi">
+            <div class="proj-kpi-val" contenteditable="false">$1.17M</div>
+            <div class="proj-kpi-lbl">Annual Revenue</div>
+          </div>
+          <div class="proj-kpi">
+            <div class="proj-kpi-val" contenteditable="false">33%</div>
+            <div class="proj-kpi-lbl">Occupancy Rate</div>
+          </div>
+          <div class="proj-kpi">
+            <div class="proj-kpi-val" contenteditable="false">$9,645</div>
+            <div class="proj-kpi-lbl">Avg. Daily Rate</div>
+          </div>
+        </div>
+        <p class="proj-disclaimer">*These estimates are for reference only and are not guaranteed. Actual rental revenue may vary. Projections are based on full calendar availability and comparable market data.</p>
+      </div>
+    </div>
+    <div>
+      <div class="revenue-img-stack">
+        <div class="revenue-img-main">
+          <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+            <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add property photo</span></div>
+            <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+          </div>
+        </div>
+        <div class="revenue-img-accent">
+          <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+            <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add image</span></div>
+            <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="process-section" id="process">
+  <div style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="section-eyebrow" contenteditable="false">Getting Started</div>
+    <h2 class="section-title" contenteditable="false">Live and listed in<br><em>14 days or less.</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title" contenteditable="false">Sign Agreement</div>
+      <div class="step-body" contenteditable="false">Month-to-month management agreement. No long-term lock-in. 60-day written notice to terminate.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title" contenteditable="false">Complete Onboarding</div>
+      <div class="step-body" contenteditable="false">We handle licenses, permits, TPT registration, insurance, and all compliance requirements on your behalf.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title" contenteditable="false">We Set Up Everything</div>
+      <div class="step-body" contenteditable="false">Photography, smart locks, noise monitoring, listing creation, and guest essentials — all handled by our team.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title" contenteditable="false">Start Earning</div>
+      <div class="step-body" contenteditable="false">Your listing goes live within 14 days. Monthly disbursements hit your account via ACH at the end of each month.</div>
+    </div>
+  </div>
+</section>
+
+<!-- What's included -->
+<section class="included-section" id="included">
+  <div class="section-eyebrow" contenteditable="false">The Details</div>
+  <h2 class="section-title" contenteditable="false">Everything included,<br><em>nothing hidden.</em></h2>
+  <div class="included-grid">
+    <div class="included-col" style="background:white;">
+      <div class="included-col-title">Included in Management Fee</div>
+      <ul class="included-list">
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">LuxeKey Portfolio Membership</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Professional listing creation, management & distribution</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Booking & guest management (24/7)</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Dynamic pricing & revenue management</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Sales tax (TPT) remittance</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Turnover & housekeeping management</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Monthly QC visit & property inspection</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Linens, towels & consumables</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Damage protection on all reservations</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Permitting & compliance (State, County & City)</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Professional photography</span></li>
+        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span contenteditable="false">Guest essentials procurement & stocking</span></li>
+      </ul>
+    </div>
+    <div class="included-col">
+      <div class="included-col-title">Additional Services Available</div>
+      <ul class="included-list">
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Interior design services</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Furniture procurement & placement</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Property floor plan or virtual tour</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Field ops repairs & contractor coordination</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Early check-in & late check-out</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Travel insurance & cancel for any reason</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Pool heat management</span></li>
+        <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Concierge experiences</span></li>
+      </ul>
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+        <div class="included-col-title" style="margin-bottom:16px">Hourly Rates</div>
+        <ul class="included-list">
+          <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Field Ops (M–F 8am–5pm) — $65/hr</span></li>
+          <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">After Hours & Emergencies — $100/hr</span></li>
+          <li><div class="plus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span contenteditable="false">Property Setup & Stocking — $55/hr</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology -->
+<section class="tech-section" id="technology">
+  <div class="section-eyebrow" contenteditable="false">Smart Property</div>
+  <h2 class="section-title" contenteditable="false">Technology that <em>protects your investment.</em></h2>
+  <div class="tech-grid">
+    <div class="tech-card"><div class="tech-icon">🔐</div><div class="tech-title" contenteditable="false">Smart Locks</div><div class="tech-body" contenteditable="false">Unique guest access codes generated per reservation. No key handoffs, no security gaps.</div></div>
+    <div class="tech-card"><div class="tech-icon">📡</div><div class="tech-title" contenteditable="false">Noise Monitoring</div><div class="tech-body" contenteditable="false">Minut decibel monitoring alerts our team to any disturbances before they become problems.</div></div>
+    <div class="tech-card"><div class="tech-icon">📹</div><div class="tech-title" contenteditable="false">Security Cameras</div><div class="tech-body" contenteditable="false">Blink security cameras at entry points monitor property access around the clock.</div></div>
+    <div class="tech-card"><div class="tech-icon">🌡</div><div class="tech-title" contenteditable="false">Nest Thermostats</div><div class="tech-body" contenteditable="false">Remote climate control saves on utilities between stays and ensures guest comfort on arrival.</div></div>
+    <div class="tech-card"><div class="tech-icon">🏊</div><div class="tech-title" contenteditable="false">WiFi Pool Equipment</div><div class="tech-body" contenteditable="false">Pool temperature, jets, and lighting managed remotely — no on-site visit required.</div></div>
+    <div class="tech-card"><div class="tech-icon">📊</div><div class="tech-title" contenteditable="false">Owner Portal</div><div class="tech-body" contenteditable="false">Live access to booking calendar, monthly statements, maintenance logs, and income reports at luxekey.com.</div></div>
+  </div>
+</section>
+
+<!-- Agreement -->
+<section class="agreement-section" id="agreement">
+  <div class="section-eyebrow" contenteditable="false">Management Agreement</div>
+  <h2 class="section-title" contenteditable="false">Simple terms.<br><em>No surprises.</em></h2>
+  <div class="agreement-grid">
+    <div class="agreement-points">
+      <div class="ag-point">
+        <div class="ag-num">01</div>
+        <div>
+          <div class="ag-title" contenteditable="false">25% Management Fee</div>
+          <div class="ag-body" contenteditable="false">Calculated on rental revenue only. No fees on owner blocks or vacant nights. Transparent monthly statements sent with every disbursement.</div>
+        </div>
+      </div>
+      <div class="ag-point">
+        <div class="ag-num">02</div>
+        <div>
+          <div class="ag-title" contenteditable="false">Month-to-Month Agreement</div>
+          <div class="ag-body" contenteditable="false">No long-term lock-in. 60-day minimum written notice to terminate. Flexible termination policy available — ask us for details.</div>
+        </div>
+      </div>
+      <div class="ag-point">
+        <div class="ag-num">03</div>
+        <div>
+          <div class="ag-title" contenteditable="false">Zero Onboarding Fees</div>
+          <div class="ag-body" contenteditable="false">We cover the cost of getting your property set up and listed. In most cases, any setup costs can be recovered from early rental income.</div>
+        </div>
+      </div>
+      <div class="ag-point">
+        <div class="ag-num">04</div>
+        <div>
+          <div class="ag-title" contenteditable="false">Owner Responsibilities</div>
+          <div class="ag-body" contenteditable="false">Owner covers standard costs of ownership: landscaping, pool maintenance, pest control, utilities, property insurance, and taxes.</div>
+        </div>
+      </div>
+      <div class="ag-point">
+        <div class="ag-num">05</div>
+        <div>
+          <div class="ag-title" contenteditable="false">Bookings Up to 12 Months Out</div>
+          <div class="ag-body" contenteditable="false">We market and accept reservations up to 12 months in advance, maximizing your revenue potential across peak seasons.</div>
+        </div>
+      </div>
+    </div>
+    <div class="agreement-img">
+      <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+        <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add property image</span></div>
+        <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Onboarding Checklist -->
+<section class="onboarding-section" id="onboarding">
+  <div class="section-eyebrow" contenteditable="false">Owner Onboarding</div>
+  <h2 class="section-title" contenteditable="false">Everything you'll need<br><em>to get started.</em></h2>
+  <p class="section-body" contenteditable="false">Once you're ready to move forward, here's a checklist of what we'll need from you. Our team handles all filings and coordination — you just need to provide the documents.</p>
+  <div class="checklist-grid">
+    <div class="checklist-item">
+      <div class="check-num">1</div>
+      <div><div class="check-title" contenteditable="false">Maricopa County Rental Registration</div><div class="check-body" contenteditable="false">Register your property as a rental at mcassessor.maricopa.gov. Search your address, select "Register Rental" and follow prompts.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">2</div>
+      <div><div class="check-title" contenteditable="false">TPT License</div><div class="check-body" contenteditable="false">Transaction Privilege Tax license obtained via aztaxes.gov. Create an account, select "Register a New Business" and complete the JT1 application. Allow 5–10 days.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">3</div>
+      <div><div class="check-title" contenteditable="false">Local City Permit</div><div class="check-body" contenteditable="false">Phoenix, Paradise Valley, and Scottsdale each require a local STR permit. LuxeKey handles this on your behalf with a signed authorization form.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">4</div>
+      <div><div class="check-title" contenteditable="false">Insurance</div><div class="check-body" contenteditable="false">Homeowners policy with $1M minimum liability coverage. LuxeKey LLC must be listed as additionally insured. Notify your agent the property is used as an STR.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">5</div>
+      <div><div class="check-title" contenteditable="false">Direct Deposit Authorization</div><div class="check-body" contenteditable="false">ACH direct deposit form to receive monthly disbursements. Completed via our secure onboarding portal.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">6</div>
+      <div><div class="check-title" contenteditable="false">W-9 & TPT Form 285</div><div class="check-body" contenteditable="false">W-9 for annual 1099 reporting. Form 285-PMC authorizes LuxeKey to file your TPT remittance. Both completed via secure link.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">7</div>
+      <div><div class="check-title" contenteditable="false">Trust Account Reserve</div><div class="check-body" contenteditable="false">A reserve of $500–$3,000 held in the trust account to cover vendor expenses between rental payments. Amount depends on your service volume.</div></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">8</div>
+      <div><div class="check-title" contenteditable="false">Property Readiness</div><div class="check-body" contenteditable="false">Property must be furnished and ready for occupancy. Once complete, your listing will be live within 14 days of signing. LuxeKey can assist with furnishing and setup if needed.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery-section" id="gallery">
+  <h2 class="gallery-title" contenteditable="false">Our Portfolio Properties</h2>
+  <div class="gallery-grid">
+    <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add portfolio photo</span></div>
+      <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+    </div>
+    <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add portfolio photo</span></div>
+      <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+    </div>
+    <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add portfolio photo</span></div>
+      <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+    </div>
+    <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add portfolio photo</span></div>
+      <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+    </div>
+    <div class="img-drop-zone" onclick="triggerImageUpload(this)">
+      <div class="no-image-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add portfolio photo</span></div>
+      <div class="drop-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Swap image</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="cta-title" contenteditable="false">Ready to unlock your<br>property's potential?</h2>
+  <p class="cta-sub" contenteditable="false">Let's talk. Our team will walk you through the projection for your property, answer any questions, and get you started with a signed agreement in days — not weeks.</p>
+  <div style="position:relative">
+    <a href="mailto:hello@luxekey.com" class="btn-ghost" style="border-color:rgba(255,255,255,0.5)">hello@luxekey.com</a>
+  </div>
+  <div class="cta-contact">
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Phone</div>
+      <div class="cta-contact-val" contenteditable="false">(480) 382-2072</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Email</div>
+      <div class="cta-contact-val" contenteditable="false">hello@luxekey.com</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Website</div>
+      <div class="cta-contact-val" contenteditable="false">www.luxekey.com</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Markets</div>
+      <div class="cta-contact-val" contenteditable="false">Scottsdale · Phoenix · Paradise Valley</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">luxekey</div>
+  <div class="footer-copy" contenteditable="false">© 2026 LuxeKey LLC · Luxury Vacation Rental Management · Arizona</div>
+</footer>
+
+<!-- Hidden file input for image uploads -->
+<input type="file" id="img-file-input" accept="image/*" style="display:none">
+
+<script>
+// ── Edit mode toggle ───────────────────────────────────────────
+let editMode = true;
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+  const bar = document.getElementById('edit-bar');
+  const btn = bar.querySelector('.eb-btn:not(.primary)');
+  btn.textContent = editMode ? 'Preview Mode' : 'Edit Mode';
+  document.querySelector('#edit-bar .edit-bar-left span').textContent =
+    editMode ? 'Click any text to edit it. Click image zones to swap photos.' : 'Preview mode — editing disabled.';
+}
+
+// Start in edit mode
+document.body.classList.add('edit-mode');
+document.querySelectorAll('[contenteditable]').forEach(el => {
+  el.contentEditable = 'true';
+});
+
+// ── Image upload ───────────────────────────────────────────────
+let activeDropZone = null;
+
+function triggerImageUpload(zone) {
+  if (!editMode) return;
+  activeDropZone = zone;
+  document.getElementById('img-file-input').click();
+}
+
+document.getElementById('img-file-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file || !activeDropZone) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    // Remove placeholder, set background image
+    const placeholder = activeDropZone.querySelector('.no-image-placeholder');
+    if (placeholder) placeholder.remove();
+    let img = activeDropZone.querySelector('img');
+    if (!img) {
+      img = document.createElement('img');
+      activeDropZone.insertBefore(img, activeDropZone.querySelector('.drop-overlay'));
+    }
+    img.src = ev.target.result;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+  };
+  reader.readAsDataURL(file);
+  this.value = '';
+});
+
+// ── Drag-and-drop images ───────────────────────────────────────
+document.querySelectorAll('.img-drop-zone').forEach(zone => {
+  zone.addEventListener('dragover', e => { e.preventDefault(); if(editMode) zone.style.outline = '2px dashed #CB7D5F'; });
+  zone.addEventListener('dragleave', () => { zone.style.outline = ''; });
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.style.outline = '';
+    if (!editMode) return;
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    activeDropZone = zone;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const placeholder = zone.querySelector('.no-image-placeholder');
+      if (placeholder) placeholder.remove();
+      let img = zone.querySelector('img');
+      if (!img) { img = document.createElement('img'); zone.insertBefore(img, zone.querySelector('.drop-overlay')); }
+      img.src = ev.target.result;
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover';
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+// ── Smooth scroll for nav links ───────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
